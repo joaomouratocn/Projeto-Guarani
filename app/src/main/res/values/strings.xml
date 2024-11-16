@@ -25,4 +25,7 @@
     <string name="str_complement">Complement</string>
     <string name="str_add_address">+ Add address</string>
     <string name="str_save">Save</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="str_register_people">Register people</string>
+    <string name="str_insert_name">Insert name</string>
 </resources>
