@@ -46,8 +46,8 @@ public class ConsultClientActivity extends AppCompatActivity {
     }
 
     private void configureToolbar() {
-        setSupportActionBar(binding.incToolbar.tlbConsultClients);
-        binding.incToolbar.tlbConsultClients.setNavigationIcon(R.drawable.menu_line);
-        binding.incToolbar.tlbConsultClients.setNavigationOnClickListener(view -> {binding.drawerLayout.openDrawer(GravityCompat.START);});
+        setSupportActionBar(binding.incToolbar.tlbCustom);
+        setTitle(getString(R.string.str_clients_consult));
+        binding.incToolbar.tlbCustom.setNavigationOnClickListener(view -> {binding.drawerLayout.openDrawer(GravityCompat.START);});
     }
 }

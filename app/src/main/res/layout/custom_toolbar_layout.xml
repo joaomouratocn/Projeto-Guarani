@@ -13,11 +13,11 @@
 
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tlb_consult_clients"
+            android:id="@+id/tlb_custom"
             android:layout_width="match_parent"
             android:background="@color/colorPrimary"
+            app:navigationIcon="@drawable/menu_line"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/str_consult_clients"
             app:titleTextColor="?attr/colorOnPrimary"/>
 
         <LinearLayout
