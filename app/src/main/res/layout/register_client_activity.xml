@@ -23,6 +23,7 @@ tools:context=".presenter.registerClient.RegisterClientActivity">
             android:layout_width="match_parent"
             android:background="@color/colorPrimary"
             android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/menu_line"
             app:title="@string/str_register_client"
             app:titleTextColor="?attr/colorOnPrimary"/>
 

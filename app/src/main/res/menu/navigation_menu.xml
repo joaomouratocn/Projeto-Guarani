@@ -1,11 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_home"
-        android:title="@string/str_home" />
+        android:id="@+id/nav_product"
+        android:title="@string/str_products" />
     <item
-        android:id="@+id/nav_register_clients"
+        android:id="@+id/nav_register_client"
         android:title="@string/str_register_clients" />
     <item
-        android:id="@+id/nav_consult_clients"
+        android:id="@+id/nav_consult_client"
         android:title="@string/str_clients_consult" />
 </menu>

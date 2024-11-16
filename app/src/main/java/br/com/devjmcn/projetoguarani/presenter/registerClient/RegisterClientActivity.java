@@ -50,7 +50,6 @@ public class RegisterClientActivity extends AppCompatActivity {
 
     private void configureToolbar() {
         setSupportActionBar(binding.tlbClients);
-        binding.tlbClients.setNavigationIcon(R.drawable.menu_line);
         binding.tlbClients.setNavigationOnClickListener(v -> binding.drawerLayout.openDrawer(GravityCompat.START));
     }
 

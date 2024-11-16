@@ -1,6 +1,6 @@
 package br.com.devjmcn.projetoguarani.presenter.consultClient;
 
-import static br.com.devjmcn.projetoguarani.util.Util.*;
+import static br.com.devjmcn.projetoguarani.util.Util.configureNavigationView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import br.com.devjmcn.projetoguarani.R;
 import br.com.devjmcn.projetoguarani.databinding.ConsultClientActivityBinding;
-import br.com.devjmcn.projetoguarani.util.Util;
 
 public class ConsultClientActivity extends AppCompatActivity {
     private ConsultClientActivityBinding binding;
@@ -37,12 +36,12 @@ public class ConsultClientActivity extends AppCompatActivity {
 
     private void initConfig() {
         configureToolbar();
-        
+
         configureNavigationDrawer();
     }
 
     private void configureNavigationDrawer() {
-        configureNavigationView(this, binding.naviClientRegister, binding.drawerLayout);
+        configureNavigationView(this, binding.naviConsultClient, binding.drawerLayout);
     }
 
     private void configureToolbar() {

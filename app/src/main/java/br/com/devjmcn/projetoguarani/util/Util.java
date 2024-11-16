@@ -23,13 +23,13 @@ public class Util {
     }
 
     private static void handleNavigationItemSelected(Activity activity, MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.nav_home) {
+        if (menuItem.getItemId() == R.id.nav_product) {
             Intent intent = new Intent(activity, ProductActivity.class);
             activity.startActivity(intent);
-        } else if (menuItem.getItemId() == R.id.navi_client_register) {
+        } else if (menuItem.getItemId() == R.id.nav_register_client) {
             Intent intent = new Intent(activity, RegisterClientActivity.class);
             activity.startActivity(intent);
-        } else if (menuItem.getItemId() == R.id.nav_consult_clients) {
+        } else if (menuItem.getItemId() == R.id.nav_consult_client) {
             Intent intent = new Intent(activity, ConsultClientActivity.class);
             activity.startActivity(intent);
         }
