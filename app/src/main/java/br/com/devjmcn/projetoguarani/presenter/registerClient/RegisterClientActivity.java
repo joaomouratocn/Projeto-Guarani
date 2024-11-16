@@ -1,5 +1,7 @@
 package br.com.devjmcn.projetoguarani.presenter.registerClient;
 
+import static br.com.devjmcn.projetoguarani.util.Util.configureNavigationView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +45,7 @@ public class RegisterClientActivity extends AppCompatActivity {
 
         configureViewPager();
 
-        configureNavigationView();
+        configureNavigationDrawer();
     }
 
     private void configureToolbar() {
@@ -70,20 +72,8 @@ public class RegisterClientActivity extends AppCompatActivity {
         ).attach();
     }
 
-    private void configureNavigationView() {
-        binding.naviClientRegister.setNavigationItemSelectedListener(menuItem -> {
-            if (menuItem.getItemId() == R.id.nav_home) {
-                Intent intent = new Intent(RegisterClientActivity.this, ProductActivity.class);
-                startActivity(intent);
-            } else if (menuItem.getItemId() == R.id.nav_clients_consult) {
-                Intent intent = new Intent(RegisterClientActivity.this, ConsultClientActivity.class);
-                startActivity(intent);
-            } else {
-                showToast(getString(R.string.str_invalid_request));
-            }
-            binding.drawerLayout.closeDrawers();
-            return true;
-        });
+    private void configureNavigationDrawer() {
+        configureNavigationView(this, binding.naviClientRegister, binding.drawerLayout);
     }
 
     private void showToast(String message) {

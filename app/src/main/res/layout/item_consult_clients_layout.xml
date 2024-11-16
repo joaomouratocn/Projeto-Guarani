@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/txv_name_client"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/img_options"
+            tools:text="Company name"/>
+
+        <ImageButton
+            android:id="@+id/img_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/str_button_options"
+            android:src="@drawable/more_fill"
+            android:background="@null"
+            app:layout_constraintTop_toTopOf="@id/txv_name_client"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/txv_name_client"
+            app:layout_constraintStart_toEndOf="@id/txv_name_client"/>
+
+        <TextView
+            android:id="@+id/txv_fantasy_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/txv_cpf_cnpj"
+            app:layout_constraintTop_toBottomOf="@id/txv_name_client"
+            tools:text="Fantasy name: ABCDEF"/>
+
+        <TextView
+            android:id="@+id/txv_cpf_cnpj"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txv_name_client"
+            app:layout_constraintStart_toEndOf="@id/txv_fantasy_name"
+            tools:text="Number: 16991234567"/>
+
+        <TextView
+            android:id="@+id/txv_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/txv_email"
+            app:layout_constraintTop_toBottomOf="@id/txv_fantasy_name"
+            tools:text="Number: (16) 991234567"/>
+
+        <TextView
+            android:id="@+id/txv_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txv_phone"
+            app:layout_constraintTop_toBottomOf="@id/txv_cpf_cnpj"
+            tools:text="Email: company@company.com.br" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
