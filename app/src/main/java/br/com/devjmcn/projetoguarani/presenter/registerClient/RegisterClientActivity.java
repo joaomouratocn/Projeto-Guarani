@@ -16,7 +16,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import br.com.devjmcn.projetoguarani.R;
 import br.com.devjmcn.projetoguarani.databinding.RegisterClientActivityBinding;
-import br.com.devjmcn.projetoguarani.presenter.consult.ConsultClientActivity;
+import br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientActivity;
 import br.com.devjmcn.projetoguarani.presenter.product.ProductActivity;
 
 public class RegisterClientActivity extends AppCompatActivity {

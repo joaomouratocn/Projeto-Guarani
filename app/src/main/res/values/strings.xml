@@ -5,12 +5,24 @@
     <string name="str_company_logo">Company logo</string>
     <string name="str_home">Home</string>
     <string name="str_clients_consult">Consult clients</string>
-    <string name="str_cnpj">CNPJ</string>
-    <string name="str_cpf">CPF</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_cnpj">Company</string>
+    <string name="str_cpf">People</string>
     <string name="str_register_client">Register client</string>
     <string name="str_menu">Menu</string>
     <string name="str_close">Close</string>
     <string name="str_invalid_request">Invalid request!</string>
+    <string name="str_tab_layout">Tab Layout</string>
+    <string name="str_insert_cnpj">Insert CNPJ</string>
+    <string name="str_register_company">Register Company</string>
+    <string name="str_social_company">Social Company</string>
+    <string name="str_fantasy_name">Fantasy name</string>
+    <string name="str_best_email">best_email</string>
+    <string name="str_secondary_email">Secondary email</string>
+    <string name="str_phone">Phone</string>
+    <string name="str_street">Street</string>
+    <string name="str_number">Number</string>
+    <string name="str_cep">CEP</string>
+    <string name="str_complement">Complement</string>
+    <string name="str_add_address">+ Add address</string>
+    <string name="str_save">Save</string>
 </resources>

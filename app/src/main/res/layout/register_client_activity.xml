@@ -30,6 +30,7 @@ tools:context=".presenter.registerClient.RegisterClientActivity">
             android:id="@+id/tb_clients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/str_tab_layout"
             app:tabGravity="fill"
             app:tabMode="fixed" />
 
