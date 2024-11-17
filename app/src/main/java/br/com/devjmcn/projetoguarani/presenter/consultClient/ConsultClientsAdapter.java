@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.devjmcn.projetoguarani.databinding.ItemConsultClientsLayoutBinding;
-import br.com.devjmcn.projetoguarani.model.models.ClientModel;
+import br.com.devjmcn.projetoguarani.model.models.Client;
 
 public class ConsultClientsAdapter extends RecyclerView.Adapter<ConsultClientsAdapter.ClientsConsultViewHolder> {
-    private List<ClientModel> clientModelList = new ArrayList<>();
+    private final List<Client> clientList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -24,13 +24,19 @@ public class ConsultClientsAdapter extends RecyclerView.Adapter<ConsultClientsAd
 
     @Override
     public void onBindViewHolder(@NonNull ClientsConsultViewHolder holder, int position) {
-        ClientModel client = clientModelList.get(position);
+        Client client = clientList.get(position);
         holder.bind(client);
     }
 
     @Override
     public int getItemCount() {
-        return clientModelList.size();
+        return clientList.size();
+    }
+
+    public void submitList(List<Client> newList){
+        clientList.clear();
+        clientList.addAll(newList);
+        notifyDataSetChanged();
     }
 
     public static class ClientsConsultViewHolder extends RecyclerView.ViewHolder {
@@ -49,7 +55,7 @@ public class ConsultClientsAdapter extends RecyclerView.Adapter<ConsultClientsAd
             return new ClientsConsultViewHolder(binding);
         }
 
-        public void bind(ClientModel client) {
+        public void bind(Client client) {
 
         }
     }

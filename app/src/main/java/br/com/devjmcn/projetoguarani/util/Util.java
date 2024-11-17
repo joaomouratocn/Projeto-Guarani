@@ -8,9 +8,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import br.com.devjmcn.projetoguarani.R;
 import br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientActivity;
-import br.com.devjmcn.projetoguarani.presenter.product.ProductActivity;
+import br.com.devjmcn.projetoguarani.presenter.product.ui.ProductActivity;
 import br.com.devjmcn.projetoguarani.presenter.registerClient.RegisterClientActivity;
 
 public class Util {
@@ -33,5 +36,11 @@ public class Util {
             Intent intent = new Intent(activity, ConsultClientActivity.class);
             activity.startActivity(intent);
         }
+    }
+
+    public static String numberFormat(String value){
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
+        double valor = Double.parseDouble(value);
+        return numberFormat.format(valor);
     }
 }

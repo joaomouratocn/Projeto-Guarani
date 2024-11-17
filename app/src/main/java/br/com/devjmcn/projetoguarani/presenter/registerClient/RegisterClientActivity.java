@@ -2,7 +2,6 @@ package br.com.devjmcn.projetoguarani.presenter.registerClient;
 
 import static br.com.devjmcn.projetoguarani.util.Util.configureNavigationView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -18,8 +17,6 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import br.com.devjmcn.projetoguarani.R;
 import br.com.devjmcn.projetoguarani.databinding.RegisterClientActivityBinding;
-import br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientActivity;
-import br.com.devjmcn.projetoguarani.presenter.product.ProductActivity;
 
 public class RegisterClientActivity extends AppCompatActivity {
     RegisterClientActivityBinding binding;

@@ -34,4 +34,16 @@
     <string name="str_button_search">Button search</string>
     <string name="str_button_options">Button options</string>
     <string name="str_products">Products</string>
+    <string name="str_price_min">Price mim: %1s</string>
+    <string name="str_price_max">Price max: %1s</string>
+    <string name="str_stock_value">Stock: %1s</string>
+    <string name="str_cod_value">Cod product: %1s</string>
+    <string name="str_all_price">All Prices</string>
+    <string name="str_button_close">Button Close</string>
+    <string name="str_stock">Stock</string>
+    <string name="str_release">Release</string>
+    <string name="str_normal">Normal</string>
+    <string name="str_promotion">Promotion</string>
+    <string name="str_loading">Loading....</string>
+    <string name="str_invalid_text_field">Invalid input!</string>
 </resources>
