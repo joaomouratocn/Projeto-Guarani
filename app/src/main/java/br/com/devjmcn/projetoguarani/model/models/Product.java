@@ -6,7 +6,6 @@ public class Product {
     private String cod;
     private String desc;
     private Double stock;
-
     private List<String> prices;
 
     public Product(String cod, String desc, Double stock, List<String> prices) {

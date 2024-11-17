@@ -20,8 +20,6 @@ public interface ProductContracts {
 
         void showToast(String message);
 
-        String getItemSelectedSpinner();
-
         void setProductsAdapter(List<Product> products);
 
         void showLoad(boolean isShow);

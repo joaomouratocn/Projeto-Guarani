@@ -60,7 +60,7 @@
             tools:text="Number: 16991234567"/>
 
         <TextView
-            android:id="@+id/txv_phone"
+            android:id="@+id/txv_dtRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -68,7 +68,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/txv_email"
             app:layout_constraintTop_toBottomOf="@id/txv_fantasy_name"
-            tools:text="Number: (16) 991234567"/>
+            tools:text="Register: 07/05/1990"/>
 
         <TextView
             android:id="@+id/txv_email"
@@ -78,7 +78,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/txv_phone"
+            app:layout_constraintStart_toEndOf="@id/txv_dtRegister"
             app:layout_constraintTop_toBottomOf="@id/txv_cpf_cnpj"
             tools:text="Email: company@company.com.br" />
 

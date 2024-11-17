@@ -11,7 +11,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class ProductPresentation implements ProductPresenterInterface {
     private ProductViewInterface productViewInterface;
-    private Repository repository;
+    private final Repository repository;
     private Disposable disposable;
 
     @Inject
@@ -27,6 +27,7 @@ public class ProductPresentation implements ProductPresenterInterface {
     @Override
     public void detachView() {
         this.productViewInterface = null;
+        disposable.dispose();
     }
 
     @Override

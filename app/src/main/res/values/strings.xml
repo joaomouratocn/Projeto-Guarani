@@ -14,12 +14,12 @@
     <string name="str_tab_layout">Tab Layout</string>
     <string name="str_insert_cnpj">Insert CNPJ</string>
     <string name="str_register_company">Register Company</string>
-    <string name="str_social_company">Social Company</string>
+    <string name="str_reason_company">Reason Company</string>
     <string name="str_fantasy_name">Fantasy name</string>
     <string name="str_best_email">Best email</string>
     <string name="str_secondary_email">Secondary email</string>
     <string name="str_phone">Phone</string>
-    <string name="str_street">Street</string>
+    <string name="str_address">Address</string>
     <string name="str_number">Number</string>
     <string name="str_cep">CEP</string>
     <string name="str_complement">Complement</string>
@@ -46,4 +46,11 @@
     <string name="str_promotion">Promotion</string>
     <string name="str_loading">Loading....</string>
     <string name="str_invalid_text_field">Invalid input!</string>
+    <string name="str_edit">Edit</string>
+    <string name="str_delete">Delete</string>
+    <string name="str_cnpj_cpf">Cnpj/Cpf: %1s</string>
+    <string name="str_email">Email: %1s</string>
+    <string name="str_dt_register">Register: %1s</string>
+    <string name="str_delete_success">Delete Success!</string>
+    <string name="str_client_detail">Client Detail</string>
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="client_type_search">
+        <item>cnpj</item>
+        <item>social reason</item>
+        <item>fantasy name</item>
+    </string-array>
+</resources>

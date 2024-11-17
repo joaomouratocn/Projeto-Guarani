@@ -17,9 +17,11 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import br.com.devjmcn.projetoguarani.R;
 import br.com.devjmcn.projetoguarani.databinding.RegisterClientActivityBinding;
+import br.com.devjmcn.projetoguarani.model.models.Client;
 
 public class RegisterClientActivity extends AppCompatActivity {
     RegisterClientActivityBinding binding;
+    Client receivedClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class RegisterClientActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        receivedClient = getIntent().getParcelableExtra("CLIENT");
 
         initConfig();
     }
@@ -51,7 +55,7 @@ public class RegisterClientActivity extends AppCompatActivity {
     }
 
     private void configureViewPager() {
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, receivedClient);
         binding.vpClients.setAdapter(viewPagerAdapter);
 
         new TabLayoutMediator(binding.tbClients, binding.vpClients,
