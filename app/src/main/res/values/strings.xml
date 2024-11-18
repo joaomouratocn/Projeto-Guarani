@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">ProjetoGuarani</string>
+    <string name="app_name">Projeto Guarani</string>
     <string name="str_register_clients">Register Clients</string>
-    <string name="str_guarani_sistemas">Guarani sistemas</string>
+    <string name="str_guarani_sistemas" translatable="false">Guarani sistemas</string>
     <string name="str_company_logo">Company logo</string>
-    <string name="str_home">Home</string>
+    <string name="str_home" translatable="false">Home</string>
     <string name="str_clients_consult">Consult clients</string>
     <string name="str_cnpj">Company</string>
     <string name="str_cpf">People</string>
@@ -11,7 +11,7 @@
     <string name="str_menu">Menu</string>
     <string name="str_close">Close</string>
     <string name="str_invalid_request">Invalid request!</string>
-    <string name="str_tab_layout">Tab Layout</string>
+    <string name="str_tab_layout" translatable="false">Tab Layout</string>
     <string name="str_insert_cnpj">Insert CNPJ</string>
     <string name="str_register_company">Register Company</string>
     <string name="str_reason_company">Reason Company</string>
@@ -21,7 +21,7 @@
     <string name="str_phone">Phone</string>
     <string name="str_address">Address</string>
     <string name="str_number">Number</string>
-    <string name="str_cep">CEP</string>
+    <string name="str_cep" translatable="false">CEP</string>
     <string name="str_complement">Complement</string>
     <string name="str_add_address">+ Add address</string>
     <string name="str_save">Save</string>
@@ -48,8 +48,8 @@
     <string name="str_invalid_text_field">Invalid input!</string>
     <string name="str_edit">Edit</string>
     <string name="str_delete">Delete</string>
-    <string name="str_cnpj_cpf">Cnpj/Cpf: %1s</string>
-    <string name="str_email">Email: %1s</string>
+    <string name="str_cnpj_cpf" translatable="false">Cnpj/Cpf: %1s</string>
+    <string name="str_email" translatable="false">Email: %1s</string>
     <string name="str_dt_register">Register: %1s</string>
     <string name="str_delete_success">Delete Success!</string>
     <string name="str_client_detail">Client Detail</string>
@@ -63,12 +63,12 @@
     <string name="str_cod_1s">Cod: %1s</string>
     <string name="str_reason_1s">Reason: %1s</string>
     <string name="str_fantasy">Fantasy name: %1s</string>
-    <string name="str_cnpj_cpf_1">CNPJ/CPF: %1s</string>
-    <string name="str_email_1">Email: %1s</string>
+    <string name="str_cnpj_cpf_1" translatable="false">CNPJ/CPF: %1s</string>
+    <string name="str_email_1" translatable="false">Email: %1s</string>
     <string name="str_email_sec">Sec Email: %1s</string>
     <string name="str_address_1">Address: %1s</string>
     <string name="str_number_1">Number: %1s</string>
-    <string name="str_cep_1">CEP: %1s</string>
+    <string name="str_cep_1" translatable="false">CEP: %1s</string>
     <string name="str_complement_1">Complement: %1s</string>
     <string name="str_district">District: %1s</string>
     <string name="str_register">Date Register: %1s</string>
