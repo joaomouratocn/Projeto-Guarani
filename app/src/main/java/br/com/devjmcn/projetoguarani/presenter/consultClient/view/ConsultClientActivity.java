@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
@@ -28,7 +29,7 @@ import javax.inject.Inject;
 import br.com.devjmcn.projetoguarani.R;
 import br.com.devjmcn.projetoguarani.databinding.ConsultClientActivityBinding;
 import br.com.devjmcn.projetoguarani.model.models.Client;
-import br.com.devjmcn.projetoguarani.presenter.registerClient.RegisterClientActivity;
+import br.com.devjmcn.projetoguarani.presenter.registerClient.view.RegisterClientActivity;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
@@ -72,8 +73,7 @@ public class ConsultClientActivity extends AppCompatActivity implements ConsultC
 
             @Override
             public void onClickDelete(Client client) {
-                consultClientPresenter.deleteClient(client);
-                execSearch();
+                confirmationDelete(client);
             }
         });
 
@@ -113,9 +113,7 @@ public class ConsultClientActivity extends AppCompatActivity implements ConsultC
         binding.incToolbar.spnSelectTypeSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                hideKeyBoard(view);
-                String selected = adapterView.getItemAtPosition(i).toString();
-                consultClientPresenter.searchClient(binding.incToolbar.edtSearch.getText().toString(), selected);
+                execSearch();
             }
 
             @Override
@@ -143,6 +141,25 @@ public class ConsultClientActivity extends AppCompatActivity implements ConsultC
     private void hideKeyBoard(View view) {
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private void confirmationDelete(Client client) {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.str_confirm)
+                .setMessage(R.string.str_do_you_really_want_to_leave)
+                .setPositiveButton(R.string.str_yes, (dialog, which) -> {
+                    consultClientPresenter.deleteClient(client);
+                    execSearch();
+                })
+                .setNegativeButton(R.string.str_no, (dialog, which) -> {})
+                .setCancelable(false)
+                .show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        execSearch();
     }
 
     @Override

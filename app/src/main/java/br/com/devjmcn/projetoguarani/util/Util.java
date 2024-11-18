@@ -4,14 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
 import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.Map;
 import br.com.devjmcn.projetoguarani.R;
 import br.com.devjmcn.projetoguarani.presenter.consultClient.view.ConsultClientActivity;
 import br.com.devjmcn.projetoguarani.presenter.product.view.ProductActivity;
-import br.com.devjmcn.projetoguarani.presenter.registerClient.RegisterClientActivity;
+import br.com.devjmcn.projetoguarani.presenter.registerClient.view.RegisterClientActivity;
 
 public class Util {
     public static void configureNavigationView(Activity activity, NavigationView navigationView, DrawerLayout drawerLayout) {
@@ -49,6 +50,14 @@ public class Util {
         NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
         double valor = Double.parseDouble(value);
         return numberFormat.format(valor);
+    }
+
+    public static String getDate() {
+        LocalDate dateNow = LocalDate.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        return dateNow.format(formatter);
     }
 
     public static String getTypeSearch(String typeSearch, Context context) {

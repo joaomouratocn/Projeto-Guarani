@@ -1,17 +1,22 @@
 package br.com.devjmcn.projetoguarani.model.db;
 
+import static br.com.devjmcn.projetoguarani.util.Util.getDate;
 import static br.com.devjmcn.projetoguarani.util.Util.getStringBd;
 import static br.com.devjmcn.projetoguarani.util.Util.getStringRes;
 import static br.com.devjmcn.projetoguarani.util.Util.getTypeSearch;
 import static br.com.devjmcn.projetoguarani.util.Util.numberFormat;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -127,9 +132,7 @@ public class dao implements Repository {
                     int columnComplement = cursor.getColumnIndexOrThrow("CLI_COMPLEMENTO");
                     int columnDistrict = cursor.getColumnIndexOrThrow("CLI_BAIRRO");
                     int columnCep = cursor.getColumnIndexOrThrow("CLI_CEP");
-                    int columnCodMunicipality = cursor.getColumnIndexOrThrow("CLI_CODIGOMUNICIPIO");
                     int columnEmail = cursor.getColumnIndexOrThrow("CLI_EMAIL");
-                    int columnPhone = cursor.getColumnIndexOrThrow("CLI_TELEFONE");
                     int columnDtRegister = cursor.getColumnIndexOrThrow("CLI_DATACADASTRO");
                     int columnSecEmail = cursor.getColumnIndexOrThrow("CLI_EMAILSECUNDARIO");
 
@@ -143,14 +146,12 @@ public class dao implements Repository {
                         String complement = cursor.getString(columnComplement);
                         String district = cursor.getString(columnDistrict);
                         String cep = cursor.getString(columnCep);
-                        String codMunicipality = cursor.getString(columnCodMunicipality);
                         String email = cursor.getString(columnEmail);
-                        String phone = cursor.getString(columnPhone);
                         String dtRegister = cursor.getString(columnDtRegister);
                         String secEmail = cursor.getString(columnSecEmail);
 
-                        Client client = new Client(cod, reason,cnpjCpf, adress,number, complement,
-                                cep, district, codMunicipality, dtRegister, fantasyName, phone, email, secEmail);
+                        Client client = new Client(cod, reason, cnpjCpf, adress, number, complement,
+                                cep, district, dtRegister, fantasyName, email, secEmail);
 
                         clientList.add(client);
                     }
@@ -181,6 +182,80 @@ public class dao implements Repository {
                 emitter.onError(e);
             }
         });
+    }
+
+    @Override
+    public Observable<Boolean> updateClient(Client editedClient) {
+        return Observable.create(emitter -> {
+            try {
+                SQLiteDatabase db = dataBaseHelper.getDatabase();
+
+                ContentValues values = getContentValues(editedClient);
+
+                String whereClause = "CLI_CODIGOCLIENTE = ?";
+                String[] whereArgs = {String.valueOf(editedClient.getCod())};
+
+                db.update("GUA_CLIENTES", values, whereClause, whereArgs);
+
+                emitter.onNext(true);
+                emitter.onComplete();
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
+        });
+    }
+
+    @Override
+    public Observable<Boolean> insertClient(Client newClient) {
+        return Observable.create(emitter -> {
+            UUID uuid = UUID.randomUUID();
+
+            Client newClientWithId = new Client(
+                    uuid.toString(),
+                    newClient.getReason(),
+                    newClient.getCnpjCpf(),
+                    newClient.getAddress(),
+                    newClient.getNumber(),
+                    newClient.getComplement(),
+                    newClient.getCep(),
+                    newClient.getDistrict(),
+                    getDate(),
+                    newClient.getFantasyName(),
+                    newClient.getEmail(),
+                    newClient.getSecEmail()
+            );
+
+            try {
+                SQLiteDatabase db = dataBaseHelper.getDatabase();
+
+                ContentValues values = getContentValues(newClientWithId);
+
+                db.insert("GUA_CLIENTES", null, values);
+
+                emitter.onNext(true);
+                emitter.onComplete();
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
+        });
+    }
+
+    @NonNull
+    private static ContentValues getContentValues(Client client) {
+        ContentValues values = new ContentValues();
+        values.put("CLI_CODIGOCLIENTE", client.getCod());
+        values.put("CLI_CGCCPF", client.getCnpjCpf());
+        values.put("CLI_RAZAOSOCIAL", client.getReason());
+        values.put("CLI_NOMEFANTASIA", client.getFantasyName());
+        values.put("CLI_EMAIL", client.getEmail());
+        values.put("CLI_EMAILSECUNDARIO", client.getSecEmail());
+        values.put("CLI_ENDERECO", client.getAddress());
+        values.put("CLI_NUMERO", client.getNumber());
+        values.put("CLI_CEP", client.getCep());
+        values.put("CLI_COMPLEMENTO", client.getComplement());
+        values.put("CLI_BAIRRO", client.getDistrict());
+        values.put("CLI_DATACADASTRO", client.getDtRegister());
+        return values;
     }
 
     private List<Product> getPrices(List<Product> productList) {

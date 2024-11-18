@@ -53,4 +53,11 @@
     <string name="str_dt_register">Register: %1s</string>
     <string name="str_delete_success">Delete Success!</string>
     <string name="str_client_detail">Client Detail</string>
+    <string name="str_confirm">Confirm</string>
+    <string name="str_do_you_really_want_to_leave">Do you really want to leave?</string>
+    <string name="str_yes">Yes</string>
+    <string name="str_no">No</string>
+    <string name="str_success">Success!</string>
+    <string name="str_insert_cpf">Insert Cpf</string>
+    <string name="str_insert_district">Insert District</string>
 </resources>

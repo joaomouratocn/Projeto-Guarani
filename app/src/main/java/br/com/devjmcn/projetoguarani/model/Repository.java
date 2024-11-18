@@ -18,4 +18,8 @@ public interface Repository {
     Observable<List<Client>> searchClient(String searchName, String typeSearch);
 
     Observable<Boolean> deleteClient(Client client);
+
+    Observable<Boolean> updateClient(Client editedClient);
+
+    Observable<Boolean> insertClient(Client newClient);
 }
