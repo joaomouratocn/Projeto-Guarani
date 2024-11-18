@@ -55,4 +55,11 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+
+    //MOCKITO
+    testImplementation libs.junit.jupiter
+    testImplementation libs.mockito.core
+    //RXJAVA
+    testImplementation libs.rxjava.v317
+    testImplementation libs.rxandroid.v302
 }
