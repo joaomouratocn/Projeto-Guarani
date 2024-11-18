@@ -27,7 +27,6 @@ public class ProductPresentation implements ProductPresenterInterface {
     @Override
     public void detachView() {
         this.productViewInterface = null;
-        disposable.dispose();
     }
 
     @Override

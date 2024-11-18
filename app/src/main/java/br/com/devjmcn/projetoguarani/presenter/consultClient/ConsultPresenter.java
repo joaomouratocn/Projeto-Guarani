@@ -31,7 +31,6 @@ public class ConsultPresenter implements ConsultClientPresenter {
     @Override
     public void detachView() {
         consultClientView = null;
-        disposable.dispose();
     }
 
     @Override
