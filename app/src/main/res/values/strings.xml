@@ -60,4 +60,16 @@
     <string name="str_success">Success!</string>
     <string name="str_insert_cpf">Insert Cpf</string>
     <string name="str_insert_district">Insert District</string>
+    <string name="str_cod_1s">Cod: %1s</string>
+    <string name="str_reason_1s">Reason: %1s</string>
+    <string name="str_fantasy">Fantasy name: %1s</string>
+    <string name="str_cnpj_cpf_1">CNPJ/CPF: %1s</string>
+    <string name="str_email_1">Email: %1s</string>
+    <string name="str_email_sec">Sec Email: %1s</string>
+    <string name="str_address_1">Address: %1s</string>
+    <string name="str_number_1">Number: %1s</string>
+    <string name="str_cep_1">CEP: %1s</string>
+    <string name="str_complement_1">Complement: %1s</string>
+    <string name="str_district">District: %1s</string>
+    <string name="str_register">Date Register: %1s</string>
 </resources>

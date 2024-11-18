@@ -75,6 +75,15 @@ public class ConsultClientActivity extends AppCompatActivity implements ConsultC
             public void onClickDelete(Client client) {
                 confirmationDelete(client);
             }
+
+            @Override
+            public void onDetailClick(Client client) {
+                if (findViewById(R.id.container) != null) {
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.container, DetailFragment.newInstance(client))
+                            .commit();
+                }
+            }
         });
 
         binding.rcvClients.setAdapter(consultClientsAdapter);

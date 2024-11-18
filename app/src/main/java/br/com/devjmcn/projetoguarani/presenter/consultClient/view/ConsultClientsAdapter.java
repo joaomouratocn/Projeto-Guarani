@@ -82,11 +82,16 @@ public class ConsultClientsAdapter extends RecyclerView.Adapter<ConsultClientsAd
                 });
                 popupMenu.show();
             });
+
+            binding.getRoot().setOnClickListener(view -> {
+                onCliCkEvent.onDetailClick(client);
+            });
         }
     }
 
     interface OnCliCkEvent {
         void onClickEdit(Client client);
         void onClickDelete(Client client);
+        void onDetailClick(Client client);
     }
 }
