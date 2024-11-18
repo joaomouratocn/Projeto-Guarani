@@ -27,6 +27,7 @@
             android:exported="false"/>
         <activity
             android:name=".presenter.registerClient.view.RegisterClientActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"/>
     </application>
 

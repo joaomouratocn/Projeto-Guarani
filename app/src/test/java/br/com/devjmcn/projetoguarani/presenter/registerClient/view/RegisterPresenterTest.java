@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 import br.com.devjmcn.projetoguarani.model.Repository;
 import br.com.devjmcn.projetoguarani.model.models.Client;
 import br.com.devjmcn.projetoguarani.presenter.registerClient.RegisterContracts;
+import br.com.devjmcn.projetoguarani.presenter.registerClient.RegisterPresenter;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 import io.reactivex.rxjava3.schedulers.Schedulers;

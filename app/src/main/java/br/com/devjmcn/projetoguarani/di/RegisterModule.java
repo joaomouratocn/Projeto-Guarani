@@ -1,7 +1,7 @@
 package br.com.devjmcn.projetoguarani.di;
 
 import br.com.devjmcn.projetoguarani.presenter.registerClient.RegisterContracts;
-import br.com.devjmcn.projetoguarani.presenter.registerClient.view.RegisterPresenter;
+import br.com.devjmcn.projetoguarani.presenter.registerClient.RegisterPresenter;
 import dagger.Binds;
 import dagger.Module;
 import dagger.hilt.InstallIn;
