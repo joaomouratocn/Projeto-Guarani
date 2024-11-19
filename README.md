@@ -8,6 +8,7 @@ Ultilizados:
 * SQLite -> Puro, passa acesso ao banco de dados
 * RxJava -> Para Trabalhos assíncrono
 * Mvp -> Para arquitetura de desenvolvimento
+* JUnit e Mockito -> Para testes (Em Desenvolvimento)
 
 Segue Alguns Prints:
 
