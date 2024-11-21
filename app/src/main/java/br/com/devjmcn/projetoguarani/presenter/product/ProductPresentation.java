@@ -1,6 +1,7 @@
 package br.com.devjmcn.projetoguarani.presenter.product;
 
-import static br.com.devjmcn.projetoguarani.presenter.product.ProductContracts.*;
+import static br.com.devjmcn.projetoguarani.presenter.product.ProductContracts.ProductPresenterInterface;
+import static br.com.devjmcn.projetoguarani.presenter.product.ProductContracts.ProductViewInterface;
 
 import javax.inject.Inject;
 
@@ -31,35 +32,41 @@ public class ProductPresentation implements ProductPresenterInterface {
 
     @Override
     public void loadProductStatus() {
+        if (viewIsNull()){return;}
         productViewInterface.showLoad(true);
-        disposable = repository.getProductStatus().subscribe(
-                prodStatus -> {
-                    productViewInterface.loadSpinner(prodStatus);
-                },
-                throwable -> {
-                    productViewInterface.showToast(throwable.getMessage());
-                },() ->{
-                    productViewInterface.showLoad(false);
-                }
-        );
+        disposable = repository.getProductStatus()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> productViewInterface.showLoad(false))
+                .subscribe(
+                        prodStatus -> {
+                            productViewInterface.loadSpinner(prodStatus);
+                        },
+                        throwable -> {
+                            productViewInterface.showToast(throwable.getMessage());
+                        }
+                );
     }
 
     @Override
     public void searchProduct(String search, String selectedStatus) {
+        if (viewIsNull()){return;}
         productViewInterface.showLoad(true);
         disposable = repository.getProductsByName(selectedStatus, search)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> productViewInterface.showLoad(false))
                 .subscribe(
-                products -> {
-                    productViewInterface.setProductsAdapter(products);
-                },
-                throwable -> {
-                    productViewInterface.showToast(throwable.getMessage());
-                },
-                () -> {
-                    productViewInterface.showLoad(false);
-                }
-        );
+                        products -> {
+                            productViewInterface.setProductsAdapter(products);
+                        },
+                        throwable -> {
+                            productViewInterface.showToast(throwable.getMessage());
+                        }
+                );
+    }
+
+    private Boolean viewIsNull() {
+        return productViewInterface == null;
     }
 }

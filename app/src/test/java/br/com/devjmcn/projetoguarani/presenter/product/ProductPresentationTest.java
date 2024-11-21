@@ -5,6 +5,9 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
+import static br.com.devjmcn.projetoguarani.presenter.product.ProductContracts.*;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -13,6 +16,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.Collections;
 
 import br.com.devjmcn.projetoguarani.model.Repository;
+import io.reactivex.rxjava3.android.plugins.RxAndroidPlugins;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -23,7 +27,7 @@ class ProductPresentationTest {
     private Repository repository;
 
     @Mock
-    private ProductContracts.ProductViewInterface productViewInterface;
+    private ProductViewInterface productViewInterface;
 
     private ProductPresentation productPresentation;
 
@@ -33,20 +37,26 @@ class ProductPresentationTest {
         RxJavaPlugins.setIoSchedulerHandler(scheduler -> Schedulers.trampoline());
         RxJavaPlugins.setComputationSchedulerHandler(scheduler -> Schedulers.trampoline());
         RxJavaPlugins.setNewThreadSchedulerHandler(scheduler -> Schedulers.trampoline());
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler(scheduler -> Schedulers.trampoline());
 
         productPresentation = new ProductPresentation(repository);
         productPresentation.attachView(productViewInterface);
     }
 
+    @AfterEach
+    void tearDown() {
+        RxAndroidPlugins.reset();
+    }
+
     @Test
     void loadProductStatus_shouldLoadSpinner_whenStatusLoadSucceeds() {
-        // Arrange
+        // Given
         when(repository.getProductStatus()).thenReturn(Observable.just(Collections.emptyList()));
 
-        // Act
+        // When
         productPresentation.loadProductStatus();
 
-        // Assert
+        // Then
         verify(productViewInterface).showLoad(true);
         verify(productViewInterface).loadSpinner(Collections.emptyList());
         verify(productViewInterface).showLoad(false);
@@ -55,14 +65,14 @@ class ProductPresentationTest {
 
     @Test
     void loadProductStatus_shouldShowToast_whenStatusLoadFails() {
-        // Arrange
+        // Given
         String errorMessage = "Status load failed";
         when(repository.getProductStatus()).thenReturn(Observable.error(new Exception(errorMessage)));
 
-        // Act
+        // When
         productPresentation.loadProductStatus();
 
-        // Assert
+        // Then
         verify(productViewInterface).showLoad(true);
         verify(productViewInterface).showToast(errorMessage);
         verify(productViewInterface).showLoad(false);
@@ -71,16 +81,16 @@ class ProductPresentationTest {
 
     @Test
     void searchProduct_shouldSetProductsAdapter_whenSearchSucceeds() {
-        // Arrange
+        // Given
         String search = "Product1";
         String selectedStatus = "Available";
         when(repository.getProductsByName(selectedStatus, search))
                 .thenReturn(Observable.just(Collections.emptyList()));
 
-        // Act
+        // When
         productPresentation.searchProduct(search, selectedStatus);
 
-        // Assert
+        // Then
         verify(productViewInterface).showLoad(true);
         verify(productViewInterface).setProductsAdapter(Collections.emptyList());
         verify(productViewInterface).showLoad(false);
@@ -89,17 +99,17 @@ class ProductPresentationTest {
 
     @Test
     void searchProduct_shouldShowToast_whenSearchFails() {
-        // Arrange
+        // Given
         String search = "Product1";
         String selectedStatus = "Available";
         String errorMessage = "Search failed";
         when(repository.getProductsByName(selectedStatus, search))
                 .thenReturn(Observable.error(new Exception(errorMessage)));
 
-        // Act
+        // When
         productPresentation.searchProduct(search, selectedStatus);
 
-        // Assert
+        // Then
         verify(productViewInterface).showLoad(true);
         verify(productViewInterface).showToast(errorMessage);
         verify(productViewInterface).showLoad(false);
@@ -108,11 +118,14 @@ class ProductPresentationTest {
 
     @Test
     void detachView_shouldAvoidInteractionsWithView() {
-        // Act
+        // Given
+        productPresentation.attachView(productViewInterface);
+
+        // When
         productPresentation.detachView();
 
-        // Assert
-        productPresentation.loadProductStatus(); // Deve evitar interações com a View
+        // Then
+        productPresentation.loadProductStatus();
         productPresentation.searchProduct("Product1", "Available");
         verifyNoInteractions(productViewInterface);
     }
