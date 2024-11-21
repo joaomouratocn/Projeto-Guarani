@@ -1,9 +1,7 @@
 package br.com.devjmcn.projetoguarani.presenter.consultClient;
 
-import static br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientContracts.ConsultClientPresenter;
-import static br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientContracts.ConsultClientView;
-
-import android.util.Log;
+import static br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientContracts.ConsultClientPresenterInterface;
+import static br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientContracts.ConsultClientViewInterface;
 
 import javax.inject.Inject;
 
@@ -13,10 +11,10 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class ConsultPresenter implements ConsultClientPresenter {
-    private ConsultClientView consultClientView;
+public class ConsultPresenter implements ConsultClientPresenterInterface {
+    private ConsultClientViewInterface consultClientViewInterface;
     private Disposable disposable;
-    private Repository repository;
+    private final Repository repository;
 
     @Inject
     public ConsultPresenter(Repository repository) {
@@ -24,51 +22,53 @@ public class ConsultPresenter implements ConsultClientPresenter {
     }
 
     @Override
-    public void attachView(ConsultClientView consultClientView) {
-        this.consultClientView = consultClientView;
+    public void attachView(ConsultClientContracts.ConsultClientViewInterface consultClientViewInterface) {
+        this.consultClientViewInterface = consultClientViewInterface;
     }
 
     @Override
     public void detachView() {
-        consultClientView = null;
+        consultClientViewInterface = null;
     }
 
     @Override
     public void searchClient(String searchName, String typeSearch) {
-        consultClientView.showLoad(true);
+        if (viewIsNull()){return;}
+        consultClientViewInterface.showLoad(true);
         disposable = repository.searchClient(searchName, typeSearch)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> consultClientViewInterface.showLoad(false))
                 .subscribe(
                         clients -> {
-                            consultClientView.setClientsAdapter(clients);
+                            consultClientViewInterface.setClientsAdapter(clients);
                         },
                         throwable -> {
-                            consultClientView.showToast(throwable.getMessage());
-                        },
-                        () -> {
-                            consultClientView.showLoad(false);
+                            consultClientViewInterface.showToast(throwable.getMessage());
                         }
                 );
     }
 
     @Override
     public void deleteClient(Client client) {
-        consultClientView.showLoad(true);
+        if (viewIsNull()){return;}
+        consultClientViewInterface.showLoad(true);
         disposable = repository.deleteClient(client)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> consultClientViewInterface.showLoad(false))
                 .subscribe(
                         result -> {
-                            consultClientView.deleteSuccess();
+                            consultClientViewInterface.deleteSuccess();
                         },
                         throwable -> {
-                            consultClientView.showToast(throwable.getMessage());
-                        },
-                        () -> {
-                            consultClientView.showLoad(false);
+                            consultClientViewInterface.showToast(throwable.getMessage());
                         }
                 );
 
+    }
+
+    private Boolean viewIsNull(){
+        return consultClientViewInterface == null;
     }
 }

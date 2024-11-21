@@ -5,9 +5,9 @@ import java.util.List;
 import br.com.devjmcn.projetoguarani.model.models.Client;
 
 public interface ConsultClientContracts {
-    interface ConsultClientPresenter{
+    interface ConsultClientPresenterInterface {
 
-        void attachView(ConsultClientView consultClientView);
+        void attachView(ConsultClientViewInterface consultClientViewInterface);
 
         void detachView();
 
@@ -16,7 +16,7 @@ public interface ConsultClientContracts {
         void deleteClient(Client client);
     }
 
-    interface ConsultClientView{
+    interface ConsultClientViewInterface {
 
         void showToast(String message);
 

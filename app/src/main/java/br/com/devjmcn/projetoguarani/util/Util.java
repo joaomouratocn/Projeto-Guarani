@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
@@ -20,7 +19,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import br.com.devjmcn.projetoguarani.R;
-import br.com.devjmcn.projetoguarani.presenter.consultClient.view.ConsultClientActivity;
+import br.com.devjmcn.projetoguarani.presenter.consultClient.view.ConsultClientActivityInterface;
 import br.com.devjmcn.projetoguarani.presenter.product.view.ProductActivity;
 import br.com.devjmcn.projetoguarani.presenter.registerClient.view.RegisterClientActivity;
 
@@ -41,7 +40,7 @@ public class Util {
             Intent intent = new Intent(activity, RegisterClientActivity.class);
             activity.startActivity(intent);
         } else if (menuItem.getItemId() == R.id.nav_consult_client) {
-            Intent intent = new Intent(activity, ConsultClientActivity.class);
+            Intent intent = new Intent(activity, ConsultClientActivityInterface.class);
             activity.startActivity(intent);
         }
     }

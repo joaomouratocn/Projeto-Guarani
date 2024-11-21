@@ -6,7 +6,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/drawer_layout"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".presenter.consultClient.view.ConsultClientActivity">
+tools:context=".presenter.consultClient.view.ConsultClientActivityInterface">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main"

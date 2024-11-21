@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presenter.consultClient.view.ConsultClientActivity"
+            android:name=".presenter.consultClient.view.ConsultClientActivityInterface"
             android:exported="false"/>
         <activity
             android:name=".presenter.registerClient.view.RegisterClientActivity"

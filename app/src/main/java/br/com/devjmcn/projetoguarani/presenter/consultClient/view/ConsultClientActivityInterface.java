@@ -1,7 +1,6 @@
 package br.com.devjmcn.projetoguarani.presenter.consultClient.view;
 
-import static br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientContracts.ConsultClientPresenter;
-import static br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientContracts.ConsultClientView;
+import static br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientContracts.ConsultClientViewInterface;
 import static br.com.devjmcn.projetoguarani.presenter.consultClient.view.ConsultClientsAdapter.OnCliCkEvent;
 import static br.com.devjmcn.projetoguarani.util.Util.configureNavigationView;
 
@@ -29,16 +28,17 @@ import javax.inject.Inject;
 import br.com.devjmcn.projetoguarani.R;
 import br.com.devjmcn.projetoguarani.databinding.ConsultClientActivityBinding;
 import br.com.devjmcn.projetoguarani.model.models.Client;
+import br.com.devjmcn.projetoguarani.presenter.consultClient.ConsultClientContracts;
 import br.com.devjmcn.projetoguarani.presenter.registerClient.view.RegisterClientActivity;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class ConsultClientActivity extends AppCompatActivity implements ConsultClientView {
+public class ConsultClientActivityInterface extends AppCompatActivity implements ConsultClientViewInterface {
     private ConsultClientActivityBinding binding;
     private ConsultClientsAdapter consultClientsAdapter;
 
     @Inject
-    ConsultClientPresenter consultClientPresenter;
+    ConsultClientContracts.ConsultClientPresenterInterface consultClientPresenterInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class ConsultClientActivity extends AppCompatActivity implements ConsultC
     }
 
     private void initConfig() {
-        consultClientPresenter.attachView(this);
+        consultClientPresenterInterface.attachView(this);
 
         configureToolbar();
 
@@ -108,7 +108,7 @@ public class ConsultClientActivity extends AppCompatActivity implements ConsultC
     private void execSearch() {
         String search = binding.incToolbar.edtSearch.getText().toString();
         String spinnerSelected = getItemSelectedSpinner();
-        consultClientPresenter.searchClient(search, spinnerSelected);
+        consultClientPresenterInterface.searchClient(search, spinnerSelected);
     }
 
     private void configureSpinner() {
@@ -157,7 +157,7 @@ public class ConsultClientActivity extends AppCompatActivity implements ConsultC
                 .setTitle(R.string.str_confirm)
                 .setMessage(R.string.str_do_you_really_want_to_leave)
                 .setPositiveButton(R.string.str_yes, (dialog, which) -> {
-                    consultClientPresenter.deleteClient(client);
+                    consultClientPresenterInterface.deleteClient(client);
                     execSearch();
                 })
                 .setNegativeButton(R.string.str_no, (dialog, which) -> {})
@@ -174,7 +174,7 @@ public class ConsultClientActivity extends AppCompatActivity implements ConsultC
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        consultClientPresenter.detachView();
+        consultClientPresenterInterface.detachView();
     }
 
     @Override
