@@ -22,6 +22,7 @@ public class RegisterPresenter implements RegisterContracts.RegisterPresenterInt
 
     @Override
     public void editClient(Client editedClient) {
+        if (viewIsNull()){return;}
         disposable = repository.updateClient(editedClient)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -46,6 +47,7 @@ public class RegisterPresenter implements RegisterContracts.RegisterPresenterInt
 
     @Override
     public void insertClient(Client newClient) {
+        if (viewIsNull()){return;}
         disposable = repository.insertClient(newClient)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -56,5 +58,9 @@ public class RegisterPresenter implements RegisterContracts.RegisterPresenterInt
                         throwable -> {
                             registerViewInterface.showToast(throwable.getMessage());
                         });
+    }
+
+    private Boolean viewIsNull(){
+        return registerViewInterface == null;
     }
 }
